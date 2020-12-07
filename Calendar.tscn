@@ -1,0 +1,768 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Calendar/CalendarScript.gd" type="Script" id=1]
+[ext_resource path="res://Calendar/CalendarContainer.gd" type="Script" id=2]
+[ext_resource path="res://Calendar/GridCalendarContainer.gd" type="Script" id=3]
+[ext_resource path="res://Calendar/Default_Theme.tres" type="Theme" id=4]
+
+[node name="Calendar" type="Node"]
+script = ExtResource( 1 )
+
+[node name="CalendarContainer" type="PanelContainer" parent="."]
+margin_left = 324.0
+margin_top = 122.0
+margin_right = 630.0
+margin_bottom = 388.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CalendarContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 315.0
+margin_bottom = 259.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CalendarContainer/VBoxContainer"]
+margin_right = 308.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CalendarContainer/VBoxContainer/VBoxContainer"]
+margin_right = 308.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 270.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
+
+[node name="CurrentDateButton" type="Button" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+margin_right = 133.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DateLabel" type="Label" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+margin_left = 137.0
+margin_right = 270.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Selected date"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 274.0
+margin_right = 308.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
+
+[node name="CloseButton" type="Button" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
+margin_right = 34.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "X"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CalendarContainer/VBoxContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 308.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="YearVBoxContainer" type="VBoxContainer" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 74.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="YearLabel" type="Label" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer2/YearVBoxContainer"]
+margin_right = 74.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Year"
+valign = 1
+
+[node name="YearSpinBox" type="SpinBox" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer2/YearVBoxContainer"]
+margin_top = 18.0
+margin_right = 74.0
+margin_bottom = 42.0
+hint_tooltip = "Year"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+min_value = 1.0
+max_value = 9999.0
+value = 1.0
+rounded = true
+
+[node name="MonthVBoxContainer2" type="VBoxContainer" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 78.0
+margin_right = 152.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="MonthLabel" type="Label" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer2/MonthVBoxContainer2"]
+margin_right = 74.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Month"
+valign = 1
+
+[node name="MonthSpinBox" type="SpinBox" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer2/MonthVBoxContainer2"]
+margin_top = 18.0
+margin_right = 74.0
+margin_bottom = 42.0
+hint_tooltip = "Month"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+min_value = 1.0
+max_value = 12.0
+value = 1.0
+rounded = true
+
+[node name="DayVBoxContainer3" type="VBoxContainer" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 156.0
+margin_right = 230.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="DayLabel" type="Label" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer2/DayVBoxContainer3"]
+margin_right = 74.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Day"
+valign = 1
+
+[node name="DaySpinBox" type="SpinBox" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer2/DayVBoxContainer3"]
+margin_top = 18.0
+margin_right = 74.0
+margin_bottom = 42.0
+hint_tooltip = "Day"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+min_value = 1.0
+max_value = 31.0
+value = 1.0
+rounded = true
+
+[node name="WeekdayLabel" type="Label" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 234.0
+margin_right = 308.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 74, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Wednesday"
+align = 1
+valign = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CalendarContainer/VBoxContainer/VBoxContainer"]
+margin_top = 70.0
+margin_right = 308.0
+margin_bottom = 90.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer4"]
+margin_right = 100.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BackYearButton" type="Button" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer4/HBoxContainer"]
+margin_right = 36.0
+margin_bottom = 20.0
+hint_tooltip = "Previous year"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "<<<"
+
+[node name="BackMonthButton" type="Button" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer4/HBoxContainer"]
+margin_left = 40.0
+margin_right = 68.0
+margin_bottom = 20.0
+hint_tooltip = "Previous month"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "<<"
+
+[node name="BackDayButton" type="Button" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer4/HBoxContainer"]
+margin_left = 72.0
+margin_right = 100.0
+margin_bottom = 20.0
+hint_tooltip = "Previous day"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "<"
+
+[node name="MonthNameLabel" type="Label" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer4"]
+margin_left = 104.0
+margin_right = 204.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 100, 20 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "January"
+align = 1
+valign = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer4"]
+margin_left = 208.0
+margin_right = 308.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
+
+[node name="ForwardDayButton" type="Button" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer4/HBoxContainer2"]
+margin_right = 28.0
+margin_bottom = 20.0
+hint_tooltip = "Next day"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = ">"
+
+[node name="ForwardMonthButton" type="Button" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer4/HBoxContainer2"]
+margin_left = 32.0
+margin_right = 60.0
+margin_bottom = 20.0
+hint_tooltip = "Next month"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = ">>"
+
+[node name="ForwardYearButton" type="Button" parent="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer4/HBoxContainer2"]
+margin_left = 64.0
+margin_right = 100.0
+margin_bottom = 20.0
+hint_tooltip = "Next year"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = ">>>"
+
+[node name="GridCalendarContainer" type="GridContainer" parent="CalendarContainer/VBoxContainer"]
+margin_top = 94.0
+margin_right = 308.0
+margin_bottom = 252.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+columns = 8
+script = ExtResource( 3 )
+
+[node name="EmptyLabel" type="Label" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_right = 35.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "  "
+align = 1
+valign = 1
+
+[node name="Weekday1Label" type="Label" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 39.0
+margin_right = 74.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "Mo"
+align = 1
+valign = 1
+
+[node name="Weekday2Label" type="Label" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 78.0
+margin_right = 113.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Tu"
+align = 1
+valign = 1
+
+[node name="Weekday3Label" type="Label" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 117.0
+margin_right = 152.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "We"
+align = 1
+valign = 1
+
+[node name="Weekday4Label" type="Label" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 156.0
+margin_right = 191.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Th"
+align = 1
+valign = 1
+
+[node name="Weekday5Label" type="Label" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 195.0
+margin_right = 230.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Fr"
+align = 1
+valign = 1
+
+[node name="Weekday6Label" type="Label" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 234.0
+margin_right = 269.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Sa"
+align = 1
+valign = 1
+
+[node name="Weekday7Label" type="Label" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 273.0
+margin_right = 308.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Su"
+align = 1
+valign = 1
+
+[node name="Week1Label" type="Label" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_top = 18.0
+margin_right = 35.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "1"
+align = 1
+valign = 1
+
+[node name="Week1Button1" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 39.0
+margin_top = 18.0
+margin_right = 74.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 4 )
+
+[node name="Week1Button2" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 78.0
+margin_top = 18.0
+margin_right = 113.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week1Button3" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 117.0
+margin_top = 18.0
+margin_right = 152.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week1Button4" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 156.0
+margin_top = 18.0
+margin_right = 191.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week1Button5" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 195.0
+margin_top = 18.0
+margin_right = 230.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week1Button6" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 234.0
+margin_top = 18.0
+margin_right = 269.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week1Button7" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 273.0
+margin_top = 18.0
+margin_right = 308.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week2Label" type="Label" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_top = 42.0
+margin_right = 35.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "2"
+align = 1
+valign = 1
+
+[node name="Week2Button1" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 39.0
+margin_top = 42.0
+margin_right = 74.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week2Button2" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 78.0
+margin_top = 42.0
+margin_right = 113.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week2Button3" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 117.0
+margin_top = 42.0
+margin_right = 152.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week2Button4" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 156.0
+margin_top = 42.0
+margin_right = 191.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week2Button5" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 195.0
+margin_top = 42.0
+margin_right = 230.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week2Button6" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 234.0
+margin_top = 42.0
+margin_right = 269.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week2Button7" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 273.0
+margin_top = 42.0
+margin_right = 308.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week3Label" type="Label" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_top = 66.0
+margin_right = 35.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "3"
+align = 1
+valign = 1
+
+[node name="Week3Button1" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 39.0
+margin_top = 66.0
+margin_right = 74.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week3Button2" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 78.0
+margin_top = 66.0
+margin_right = 113.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week3Button3" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 117.0
+margin_top = 66.0
+margin_right = 152.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week3Button4" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 156.0
+margin_top = 66.0
+margin_right = 191.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week3Button5" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 195.0
+margin_top = 66.0
+margin_right = 230.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week3Button6" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 234.0
+margin_top = 66.0
+margin_right = 269.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week3Button7" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 273.0
+margin_top = 66.0
+margin_right = 308.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week4Label" type="Label" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_top = 90.0
+margin_right = 35.0
+margin_bottom = 110.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "4"
+align = 1
+valign = 1
+
+[node name="Week4Button1" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 39.0
+margin_top = 90.0
+margin_right = 74.0
+margin_bottom = 110.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week4Button2" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 78.0
+margin_top = 90.0
+margin_right = 113.0
+margin_bottom = 110.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week4Button3" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 117.0
+margin_top = 90.0
+margin_right = 152.0
+margin_bottom = 110.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week4Button4" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 156.0
+margin_top = 90.0
+margin_right = 191.0
+margin_bottom = 110.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week4Button5" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 195.0
+margin_top = 90.0
+margin_right = 230.0
+margin_bottom = 110.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week4Button6" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 234.0
+margin_top = 90.0
+margin_right = 269.0
+margin_bottom = 110.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week4Button7" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 273.0
+margin_top = 90.0
+margin_right = 308.0
+margin_bottom = 110.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week5Label" type="Label" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_top = 114.0
+margin_right = 35.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "5"
+align = 1
+valign = 1
+
+[node name="Week5Button1" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 39.0
+margin_top = 114.0
+margin_right = 74.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week5Button2" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 78.0
+margin_top = 114.0
+margin_right = 113.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week5Button3" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 117.0
+margin_top = 114.0
+margin_right = 152.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week5Button4" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 156.0
+margin_top = 114.0
+margin_right = 191.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week5Button5" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 195.0
+margin_top = 114.0
+margin_right = 230.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week5Button6" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 234.0
+margin_top = 114.0
+margin_right = 269.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week5Button7" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 273.0
+margin_top = 114.0
+margin_right = 308.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week6Label" type="Label" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_top = 138.0
+margin_right = 35.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "6"
+align = 1
+valign = 1
+
+[node name="Week6Button1" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 39.0
+margin_top = 138.0
+margin_right = 74.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week6Button2" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 78.0
+margin_top = 138.0
+margin_right = 113.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week6Button3" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 117.0
+margin_top = 138.0
+margin_right = 152.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week6Button4" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 156.0
+margin_top = 138.0
+margin_right = 191.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week6Button5" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 195.0
+margin_top = 138.0
+margin_right = 230.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week6Button6" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 234.0
+margin_top = 138.0
+margin_right = 269.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Week6Button7" type="Button" parent="CalendarContainer/VBoxContainer/GridCalendarContainer"]
+margin_left = 273.0
+margin_top = 138.0
+margin_right = 308.0
+margin_bottom = 158.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+[connection signal="gui_input" from="CalendarContainer" to="CalendarContainer" method="_on_CalendarContainer_gui_input"]
+[connection signal="button_up" from="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/CurrentDateButton" to="CalendarContainer" method="_on_CurrentDateButton_button_up"]
+[connection signal="button_up" from="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer2/CloseButton" to="CalendarContainer" method="_on_CloseButton_button_up"]
+[connection signal="value_changed" from="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer2/YearVBoxContainer/YearSpinBox" to="CalendarContainer" method="_on_YearSpinBox_value_changed"]
+[connection signal="value_changed" from="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer2/MonthVBoxContainer2/MonthSpinBox" to="CalendarContainer" method="_on_MonthSpinBox_value_changed"]
+[connection signal="value_changed" from="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer2/DayVBoxContainer3/DaySpinBox" to="CalendarContainer" method="_on_DaySpinBox_value_changed"]
+[connection signal="button_up" from="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer4/HBoxContainer/BackYearButton" to="CalendarContainer" method="_on_BackYearButton_button_up"]
+[connection signal="button_up" from="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer4/HBoxContainer/BackMonthButton" to="CalendarContainer" method="_on_BackMonthButton_button_up"]
+[connection signal="button_up" from="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer4/HBoxContainer/BackDayButton" to="CalendarContainer" method="_on_BackDayButton_button_up"]
+[connection signal="button_up" from="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/ForwardDayButton" to="CalendarContainer" method="_on_ForwardDayButton_button_up"]
+[connection signal="button_up" from="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/ForwardMonthButton" to="CalendarContainer" method="_on_ForwardMonthButton_button_up"]
+[connection signal="button_up" from="CalendarContainer/VBoxContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/ForwardYearButton" to="CalendarContainer" method="_on_ForwardYearButton_button_up"]
